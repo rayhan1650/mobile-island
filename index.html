@@ -22,20 +22,25 @@
       <!-- search box  -->
       <div class="input-group w-50 mx-auto">
         <input
-          id="input-id"
+          id="input-box"
           type="search"
           class="form-control rounded"
           placeholder="Search"
           aria-label="Search"
           aria-describedby="search-addon"
         />
-        <button id="search-btn" type="button" class="btn btn-outline-primary">
+        <button
+          onclick="allPhone()"
+          id="search-btn"
+          type="button"
+          class="btn btn-outline-primary"
+        >
           search
         </button>
       </div>
       <!-- phone details  -->
       <div class="card" style="width: 18rem">
-        <img src="..." class="card-img-top" alt="..." />
+        <img src="" class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
           <p class="card-text">Some</p>
@@ -45,7 +50,7 @@
       <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
           <div class="card">
-            <img src="..." class="card-img-top" alt="..." />
+            <img src="" class="card-img-top" alt="..." />
             <div class="card-body">
               <h2 class="card-title">Phone Name</h2>
               <h4 class="card-title">Brand Name</h4>
