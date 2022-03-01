@@ -1,6 +1,7 @@
 // get allPhone data
 const allPhone = () => {
   document.getElementById("search-result").innerHTML = ``;
+  document.getElementById("phone-details").innerHTML = ``;
   const searchValue = document.getElementById("search-box").value;
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
   fetch(url)
@@ -38,7 +39,7 @@ const showAllPhone = (phones) => {
       parent.appendChild(div);
     }
   } else {
-    alert("No phone found by this name");
+    alert("No phone found.");
   }
 };
 
@@ -54,7 +55,7 @@ const phoneDetails = (details) => {
 //set phoneDetails
 const setPhoneDetails = (info) => {
   const parent = document.getElementById("phone-details");
-  parent.classList = "card my-card-bg my-input my-5 mx-auto";
+  parent.classList = "card my-card-bg my-input my-5 mx-auto shadow";
   const div = document.createElement("div");
   div.innerHTML = `
     <div class="d-flex justify-content-center"><img src="${
@@ -65,18 +66,24 @@ const setPhoneDetails = (info) => {
       <h2 class="card-title">
         ${info.name ? info.name : "Device name not found"}
       </h2>
-      <p>Release Date: ${
+      <h6>Release Date: ${
         info.releaseDate ? info.releaseDate : "Release date not found"
-      }</p>
-      <h6 class="card-title">
+      }</h6>
+      <h4 class="card-title">
         Brand: ${info.brand ? info.brand : "Brand not found"}
-      </h6>
-      <h2 class="card-title bg-dark bg-opacity-25">Main Feature</h2>
+      </h4>
+      <h3 class="card-title bg-dark bg-opacity-25 mt-5">Main Feature</h3>
       <div class="container">
-        <h4 class="card-title">Chipset</h4>
-        <h4 class="card-title">Memory</h4>
-        <h4 class="card-title">Storage</h4>
-        <h4 class="card-title">Display</h4>
+        <p><span class="fw-bold">Chipset:</span> ${
+          info.mainFeatures.chipSet
+        }</p>
+        <p><span class="fw-bold">Memory:</span> ${info.mainFeatures.memory}</p>
+        <p><span class="fw-bold">Storage:</span> ${
+          info.mainFeatures.storage
+        }</p>
+        <p><span class="fw-bold">Display:</span> ${
+          info.mainFeatures.displaySize
+        }</p>
       </div>
       <h2 class="card-title bg-dark bg-opacity-25">Sensors</h2>
       <h2 class="card-title bg-dark bg-opacity-25">Others</h2>
