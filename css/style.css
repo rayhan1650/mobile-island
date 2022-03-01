@@ -1,0 +1,13 @@
+.my-input {
+  width: 50%;
+}
+
+.my-card-bg {
+  background-color: aliceblue;
+}
+
+@media only screen and (max-width: 767px) {
+  .my-input {
+    width: 100%;
+  }
+}
