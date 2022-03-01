@@ -10,11 +10,12 @@ const allPhone = () => {
 
 // set allPhone data
 const showAllPhone = (phones) => {
-  for (const phone of phones) {
-    const parent = document.getElementById("search-result");
-    const div = document.createElement("div");
-    div.classList = "col";
-    div.innerHTML = `    
+  if (phones.length) {
+    for (const phone of phones) {
+      const parent = document.getElementById("search-result");
+      const div = document.createElement("div");
+      div.classList = "col";
+      div.innerHTML = `    
         <div class="card h-100 align-items-center text-center shadow my-card-bg">
           <img src="${
             phone.image ? phone.image : "Photo not found"
@@ -27,8 +28,23 @@ const showAllPhone = (phones) => {
               phone.brand ? phone.brand : "Brand not found"
             }</h6>           
           </div>
-          <div class="card-footer my-card-bg border-0"><button class="btn btn-primary ">Details</button></div>
+          <div class="card-footer my-card-bg border-0">
+            <a href="#phone-details"><button onclick="phoneDetails('${
+              phone.slug
+            }')" class="btn btn-primary ">Details</button></a>         
+          </div>
         </div>`;
-    parent.appendChild(div);
+      parent.appendChild(div);
+    }
+  } else {
+    alert("No phone found by this name");
   }
+};
+
+// set phoneDetails
+const phoneDetails = (details) => {
+  const url = `https://openapi.programming-hero.com/api/phone/${details}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => console.log(data));
 };
