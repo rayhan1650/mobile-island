@@ -4,6 +4,10 @@ const allPhone = () => {
   document.getElementById("phone-details").innerHTML = ``;
   const searchValue = document.getElementById("search-box").value;
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
+  // show spinner
+  toggleSpinner("inline-block");
+
+  // fetch searched data
   fetch(url)
     .then((res) => res.json())
     .then((phone) => showAllPhone(phone.data));
@@ -51,6 +55,7 @@ const showAllPhone = (phones) => {
       }
       count++;
     }
+    toggleSpinner("none");
   } else {
     alert("No phone found.");
   }
@@ -68,7 +73,7 @@ const phoneDetails = (details) => {
 //set phoneDetails
 const setPhoneDetails = (info) => {
   const parent = document.getElementById("phone-details");
-  parent.classList = "card my-card-bg my-input my-5 mx-auto border-0 shadow";
+  parent.classList = "card my-card-bg my-input mt-5 mx-auto border-0 shadow";
   const div = document.createElement("div");
   div.innerHTML = `
     <div class="d-flex justify-content-center shadow"><img src="${
@@ -118,4 +123,9 @@ const setOthers = (obj) => {
     div.appendChild(p);
   }
   return div.innerHTML;
+};
+
+//add spinner
+const toggleSpinner = (displayStyle) => {
+  document.getElementById("spinner").style.display = displayStyle;
 };

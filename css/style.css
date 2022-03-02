@@ -10,9 +10,14 @@
   display: none;
 }
 
+.loader {
+  margin-left: 50%;
+  display: none;
+}
+
 #show-all-btn {
-  width: 100px;
-  height: 50px;
+  width: 150px;
+  height: 40px;
 }
 
 @media only screen and (max-width: 767px) {
