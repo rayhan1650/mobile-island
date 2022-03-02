@@ -3,6 +3,7 @@ const allPhone = () => {
   document.getElementById("search-result").innerHTML = ``;
   document.getElementById("phone-details").innerHTML = ``;
   document.getElementById("show-error").style.display = "none";
+  document.getElementById("show-all-btn").style.display = "none";
   const searchValue = document.getElementById("search-box").value;
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
   // show spinner
