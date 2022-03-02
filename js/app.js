@@ -55,38 +55,54 @@ const phoneDetails = (details) => {
 //set phoneDetails
 const setPhoneDetails = (info) => {
   const parent = document.getElementById("phone-details");
-  parent.classList = "card my-card-bg my-input my-5 mx-auto shadow";
+  parent.classList = "card my-card-bg my-input my-5 mx-auto border-0 shadow";
   const div = document.createElement("div");
   div.innerHTML = `
-    <div class="d-flex justify-content-center"><img src="${
+    <div class="d-flex justify-content-center shadow"><img src="${
       info.image
-    }" class="card-img-top my-input" alt="..." /></div>
+    }" class="card-img-top my-input p-3" alt="..." /></div>
     
     <div class="card-body">
-      <h2 class="card-title">
+      <h2 class="card-title shadow py-2">
         ${info.name ? info.name : "Device name not found"}
       </h2>
-      <h6>Release Date: ${
+      <p>Release Date: ${
         info.releaseDate ? info.releaseDate : "Release date not found"
-      }</h6>
+      }</p>
       <h4 class="card-title">
         Brand: ${info.brand ? info.brand : "Brand not found"}
       </h4>
-      <h3 class="card-title bg-dark bg-opacity-25 mt-5">Main Feature</h3>
+      <h4 class="card-title bg-dark bg-opacity-10 mt-5 shadow-sm py-1">Main Feature</h4>
       <div class="container">
         <p><span class="fw-bold">Chipset:</span> ${
           info.mainFeatures.chipSet
         }</p>
-        <p><span class="fw-bold">Memory:</span> ${info.mainFeatures.memory}</p>
+        <p><span class="fw-bold ">Memory:</span> ${info.mainFeatures.memory}</p>
         <p><span class="fw-bold">Storage:</span> ${
           info.mainFeatures.storage
         }</p>
         <p><span class="fw-bold">Display:</span> ${
           info.mainFeatures.displaySize
         }</p>
+        <p><span class="fw-bold">Sensors:</span> ${
+          info.mainFeatures.sensors
+        }</p>
+      </div>     
+      <h4 class="card-title bg-dark bg-opacity-10 mt-3 shadow-sm py-1">Others</h4>
+      <div class="container">
+      ${info.others ? setOthers(info.others) : "Others information not found"}
       </div>
-      <h2 class="card-title bg-dark bg-opacity-25">Sensors</h2>
-      <h2 class="card-title bg-dark bg-opacity-25">Others</h2>
     </div>`;
   parent.appendChild(div);
+};
+
+//get others info
+const setOthers = (obj) => {
+  div = document.createElement("div");
+  for (const key in obj) {
+    p = document.createElement("p");
+    p.innerHTML = `<span class="fw-bold">${key}:</span> ${obj[key]}`;
+    div.appendChild(p);
+  }
+  return div.innerHTML;
 };
