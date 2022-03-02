@@ -2,6 +2,7 @@
 const allPhone = () => {
   document.getElementById("search-result").innerHTML = ``;
   document.getElementById("phone-details").innerHTML = ``;
+  document.getElementById("show-error").style.display = "none";
   const searchValue = document.getElementById("search-box").value;
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
   // show spinner
@@ -15,8 +16,8 @@ const allPhone = () => {
 
 // set allPhone data
 const showAllPhone = (phones) => {
+  let count = 0;
   if (phones.length) {
-    let count = 0;
     for (const phone of phones) {
       const parent = document.getElementById("search-result");
       const div = document.createElement("div");
@@ -57,7 +58,9 @@ const showAllPhone = (phones) => {
     }
     toggleSpinner("none");
   } else {
-    alert("No phone found.");
+    toggleSpinner("none");
+    document.getElementById("show-all-btn").style.display = "none";
+    document.getElementById("show-error").style.display = "block";
   }
 };
 
@@ -84,9 +87,7 @@ const setPhoneDetails = (info) => {
       <h2 class="card-title shadow py-2">
         ${info.name ? info.name : "Device name not found"}
       </h2>
-      <p>Release Date: ${
-        info.releaseDate ? info.releaseDate : "Release date not found"
-      }</p>
+      <p>${info.releaseDate ? info.releaseDate : "Release date not found"}</p>
       <h4 class="card-title">
         Brand: ${info.brand ? info.brand : "Brand not found"}
       </h4>
