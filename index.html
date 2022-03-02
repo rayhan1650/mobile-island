@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <h1 class="text-center my-5">Mobile Island</h1>
+    <h1 class="text-center display-1 fw-bold my-5">Mobile Island</h1>
     <!-- main part  -->
     <main class="container">
       <!-- search box  -->
@@ -41,11 +41,20 @@
 
       <!-- phone details  -->
       <div id="phone-details"></div>
+
       <!--set search result  -->
-      <div
-        id="search-result"
-        class="row row-cols-1 row-cols-md-3 g-4 my-5"
-      ></div>
+      <div id="search-container" class="d-flex flex-column align-items-center">
+        <div
+          id="search-result"
+          class="row row-cols-1 row-cols-md-3 g-4 my-5"
+        ></div>
+        <button
+          id="show-all-btn"
+          class="btn btn-primary my-element-display mb-4"
+        >
+          Show All
+        </button>
+      </div>
     </main>
     <!-- bootstrap js link  -->
     <script

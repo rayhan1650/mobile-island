@@ -6,6 +6,15 @@
   background-color: aliceblue;
 }
 
+.my-element-display {
+  display: none;
+}
+
+#show-all-btn {
+  width: 100px;
+  height: 50px;
+}
+
 @media only screen and (max-width: 767px) {
   .my-input {
     width: 100%;

@@ -12,6 +12,7 @@ const allPhone = () => {
 // set allPhone data
 const showAllPhone = (phones) => {
   if (phones.length) {
+    let count = 0;
     for (const phone of phones) {
       const parent = document.getElementById("search-result");
       const div = document.createElement("div");
@@ -37,6 +38,18 @@ const showAllPhone = (phones) => {
           </div>
         </div>`;
       parent.appendChild(div);
+
+      //handle search result more than twenty
+      if (count > 19) {
+        div.classList = "my-element-display";
+        const showAllBtn = document.getElementById("show-all-btn");
+        showAllBtn.style.display = "block";
+        showAllBtn.addEventListener("click", function () {
+          div.classList = "col";
+          showAllBtn.style.display = "none";
+        });
+      }
+      count++;
     }
   } else {
     alert("No phone found.");
